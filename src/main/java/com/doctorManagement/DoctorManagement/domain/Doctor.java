@@ -1,5 +1,7 @@
 package com.doctorManagement.DoctorManagement.domain;
 
+import com.doctorManagement.DoctorManagement.dto.CepDTO;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class Doctor implements Serializable {
 
     private long cellPhone;
 
-    private Cep cep;
+    private CepDTO cep;
 
     @OneToMany()
     @JoinColumn(name="medicalSpecialty_id")
@@ -32,7 +34,7 @@ public class Doctor implements Serializable {
     public Doctor(){
 
     }
-    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone, Cep cep) {
+    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone, CepDTO cep) {
         this.id = id;
         this.name = name;
         this.CRM = CRM;
@@ -81,11 +83,11 @@ public class Doctor implements Serializable {
         this.cellPhone = cellPhone;
     }
 
-    public Cep getCep() {
+    public CepDTO getCep() {
         return cep;
     }
 
-    public void setCep(Cep cep) {
+    public void setCep(CepDTO cep) {
         this.cep = cep;
     }
 
