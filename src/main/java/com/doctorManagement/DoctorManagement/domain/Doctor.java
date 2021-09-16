@@ -16,19 +16,19 @@ public class Doctor {
 
     private String name;
 
-    private Long CRM;
+    private long CRM;
 
-    private Long landline;
+    private long landline;
 
-    private Long cellPhone;
-    private Long cep;
+    private long cellPhone;
+    private long cep;
 
     private String medicalSpecialty;
 
     public Doctor(){
 
     }
-    public Doctor(Integer id, String name, Long CRM, Long landline, Long cellPhone, Long cep, String medicalSpecialty) {
+    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone, long cep, String medicalSpecialty) {
         this.id = id;
         this.name = name;
         this.CRM = CRM;
@@ -54,35 +54,35 @@ public class Doctor {
         this.name = name;
     }
 
-    public Long getCRM() {
+    public long getCRM() {
         return CRM;
     }
 
-    public void setCRM(Long CRM) {
+    public void setCRM(long CRM) {
         this.CRM = CRM;
     }
 
-    public Long getLandline() {
+    public long getLandline() {
         return landline;
     }
 
-    public void setLandline(Long landline) {
+    public void setLandline(long landline) {
         this.landline = landline;
     }
 
-    public Long getCellPhone() {
+    public long getCellPhone() {
         return cellPhone;
     }
 
-    public void setCellPhone(Long cellPhone) {
+    public void setCellPhone(long cellPhone) {
         this.cellPhone = cellPhone;
     }
 
-    public Long getCep() {
+    public long getCep() {
         return cep;
     }
 
-    public void setCep(Long cep) {
+    public void setCep(long cep) {
         this.cep = cep;
     }
 
