@@ -1,6 +1,8 @@
 package com.doctorManagement.DoctorManagement.service;
 
+import com.doctorManagement.DoctorManagement.domain.Doctor;
 import com.doctorManagement.DoctorManagement.domain.MedicalSpecialty;
+import com.doctorManagement.DoctorManagement.repository.DoctorRepository;
 import com.doctorManagement.DoctorManagement.repository.MedicalSpecialtyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,8 @@ public class DBService {
     @Autowired
     MedicalSpecialtyRepository medicalSpecialtyRepository;
 
+    @Autowired
+    DoctorRepository doctorRepository;
 
     public void instantiateTestDatabase(){
 
@@ -31,6 +35,14 @@ public class DBService {
         medicalSpecialtyRepository.save(medicalSpecialty6);
         medicalSpecialtyRepository.save(medicalSpecialty7);
         medicalSpecialtyRepository.save(medicalSpecialty8);
+
+        Doctor doctor = new Doctor(null,"José",4234234,78426786,43234234);
+        Doctor doctor2 = new Doctor(null,"Caio",867868,786254353,432349234);
+
+        doctorRepository.save(doctor);
+        doctorRepository.save(doctor2);
+
+
 
     }
 

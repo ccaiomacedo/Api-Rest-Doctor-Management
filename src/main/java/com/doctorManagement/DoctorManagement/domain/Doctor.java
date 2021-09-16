@@ -34,13 +34,12 @@ public class Doctor implements Serializable {
     public Doctor(){
 
     }
-    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone, CepDTO cep) {
+    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone) {
         this.id = id;
         this.name = name;
         this.CRM = CRM;
         this.landline = landline;
         this.cellPhone = cellPhone;
-        this.cep = cep;
     }
 
     public Integer getId() {
