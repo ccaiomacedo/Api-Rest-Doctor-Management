@@ -20,8 +20,8 @@ public class DoctorManagementApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Doctor doctor = new Doctor(null,"josé",2434245,4532342,42342345,3424254,"Alergologia");
-		Doctor doctor2 = new Doctor(null,"Fernando",2434245,4532342,42342345,3424254,"Angiologia");
+		Doctor doctor = new Doctor(null,"josé",2434245,4532342,42342345,3424254);
+		Doctor doctor2 = new Doctor(null,"Fernando",2434245,4532342,42342345,3424254);
 
 		doctorRepository.save(doctor);
 		doctorRepository.save(doctor2);

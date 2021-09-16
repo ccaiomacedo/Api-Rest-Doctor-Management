@@ -1,14 +1,15 @@
 package com.doctorManagement.DoctorManagement.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
 @Entity
-public class Doctor {
+public class Doctor implements Serializable {
+    private static final long serialVersionUID=1l;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,19 +24,20 @@ public class Doctor {
     private long cellPhone;
     private long cep;
 
-    private String medicalSpecialty;
+    @OneToMany()
+    @JoinColumn(name="medicalSpecialty_id")
+    private List<MedicalSpecialty> medicalSpecialty = new ArrayList<>();
 
     public Doctor(){
 
     }
-    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone, long cep, String medicalSpecialty) {
+    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone, long cep) {
         this.id = id;
         this.name = name;
         this.CRM = CRM;
         this.landline = landline;
         this.cellPhone = cellPhone;
         this.cep = cep;
-        this.medicalSpecialty = medicalSpecialty;
     }
 
     public Integer getId() {
@@ -86,13 +88,10 @@ public class Doctor {
         this.cep = cep;
     }
 
-    public String getMedicalSpecialty() {
+    public List<MedicalSpecialty> getMedicalSpecialty() {
         return medicalSpecialty;
     }
 
-    public void setMedicalSpecialty(String medicalSpecialty) {
-        this.medicalSpecialty = medicalSpecialty;
-    }
 
     @Override
     public boolean equals(Object o) {
