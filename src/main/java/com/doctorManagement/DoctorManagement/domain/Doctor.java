@@ -22,7 +22,8 @@ public class Doctor implements Serializable {
     private long landline;
 
     private long cellPhone;
-    private long cep;
+
+    private Cep cep;
 
     @OneToMany()
     @JoinColumn(name="medicalSpecialty_id")
@@ -31,7 +32,7 @@ public class Doctor implements Serializable {
     public Doctor(){
 
     }
-    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone, long cep) {
+    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone, Cep cep) {
         this.id = id;
         this.name = name;
         this.CRM = CRM;
@@ -80,11 +81,11 @@ public class Doctor implements Serializable {
         this.cellPhone = cellPhone;
     }
 
-    public long getCep() {
+    public Cep getCep() {
         return cep;
     }
 
-    public void setCep(long cep) {
+    public void setCep(Cep cep) {
         this.cep = cep;
     }
 
