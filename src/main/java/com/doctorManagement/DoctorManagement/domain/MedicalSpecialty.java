@@ -14,7 +14,7 @@ public class MedicalSpecialty implements Serializable {
     private Integer id;
     private String name;
 
-    @OneToMany(mappedBy ="MedicalSpecialty")
+    @OneToMany(mappedBy ="medicalSpecialty")
     private List<Doctor> doctors = new ArrayList<>();
 
     public MedicalSpecialty(){

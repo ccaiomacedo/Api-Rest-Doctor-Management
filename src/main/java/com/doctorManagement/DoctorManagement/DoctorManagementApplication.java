@@ -1,7 +1,9 @@
 package com.doctorManagement.DoctorManagement;
 
 import com.doctorManagement.DoctorManagement.domain.Doctor;
+import com.doctorManagement.DoctorManagement.domain.MedicalSpecialty;
 import com.doctorManagement.DoctorManagement.repository.DoctorRepository;
+import com.doctorManagement.DoctorManagement.repository.MedicalSpecialtyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DoctorManagementApplication implements CommandLineRunner {
 
 	@Autowired
-	DoctorRepository doctorRepository;
+	MedicalSpecialtyRepository medicalSpecialtyRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DoctorManagementApplication.class, args);
@@ -20,11 +22,23 @@ public class DoctorManagementApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Doctor doctor = new Doctor(null,"josé",2434245,4532342,42342345,3424254);
-		Doctor doctor2 = new Doctor(null,"Fernando",2434245,4532342,42342345,3424254);
+		MedicalSpecialty medicalSpecialty = new MedicalSpecialty(null,"Alergologia");
+		MedicalSpecialty medicalSpecialty2 = new MedicalSpecialty(null,"Angiologia");
+		MedicalSpecialty medicalSpecialty3= new MedicalSpecialty(null,"Buco maxilo");
+		MedicalSpecialty medicalSpecialty4 = new MedicalSpecialty(null,"Cardiologia clínica");
+		MedicalSpecialty medicalSpecialty5= new MedicalSpecialty(null,"Cardiologia infantil");
+		MedicalSpecialty medicalSpecialty6 = new MedicalSpecialty(null,"Cirurgia cardíaca");
+		MedicalSpecialty medicalSpecialty7 = new MedicalSpecialty(null,"Cirurgia cabeça e pescoço");
+		MedicalSpecialty medicalSpecialty8 = new MedicalSpecialty(null,"Cirurgia de tórax");
 
-		doctorRepository.save(doctor);
-		doctorRepository.save(doctor2);
+		medicalSpecialtyRepository.save(medicalSpecialty);
+		medicalSpecialtyRepository.save(medicalSpecialty2);
+		medicalSpecialtyRepository.save(medicalSpecialty3);
+		medicalSpecialtyRepository.save(medicalSpecialty4);
+		medicalSpecialtyRepository.save(medicalSpecialty5);
+		medicalSpecialtyRepository.save(medicalSpecialty6);
+		medicalSpecialtyRepository.save(medicalSpecialty7);
+		medicalSpecialtyRepository.save(medicalSpecialty8);
 
 	}
 }
