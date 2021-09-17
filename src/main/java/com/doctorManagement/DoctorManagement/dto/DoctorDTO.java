@@ -5,6 +5,9 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DoctorDTO implements Serializable {
     private static final long serialVersionUID=1l;
@@ -20,6 +23,10 @@ public class DoctorDTO implements Serializable {
 
     private long landline;
     private long cellPhone;
+
+
+    private List<MedicalSpecialtyDTO> medicalSpecialty = new ArrayList<>();
+
 
     public DoctorDTO(){
 
@@ -72,4 +79,6 @@ public class DoctorDTO implements Serializable {
     public void setCellPhone(long cellPhone) {
         this.cellPhone = cellPhone;
     }
+
+
 }

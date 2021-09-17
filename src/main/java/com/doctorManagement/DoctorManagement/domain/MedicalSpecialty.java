@@ -2,8 +2,8 @@ package com.doctorManagement.DoctorManagement.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class MedicalSpecialty implements Serializable {
@@ -14,16 +14,18 @@ public class MedicalSpecialty implements Serializable {
     private Integer id;
     private String name;
 
-    @OneToMany(mappedBy ="medicalSpecialty")
-    private List<Doctor> doctors = new ArrayList<>();
+    @ManyToMany( mappedBy = "medicalSpecialty")
+    private Set<Doctor> doctors = new HashSet<>();
+
 
     public MedicalSpecialty(){
 
     }
 
-    public MedicalSpecialty(Integer id, String name) {
+    public MedicalSpecialty(Integer id, String name,Set<Doctor> doctors) {
         this.id = id;
         this.name = name;
+        this.doctors = doctors;
     }
 
     public Integer getId() {
@@ -42,8 +44,7 @@ public class MedicalSpecialty implements Serializable {
         this.name = name;
     }
 
-    public List<Doctor> getDoctors() {
+    public Set<Doctor> getDoctors() {
         return doctors;
     }
-
 }

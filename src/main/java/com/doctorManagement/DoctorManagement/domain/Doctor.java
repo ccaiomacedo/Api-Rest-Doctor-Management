@@ -1,12 +1,10 @@
 package com.doctorManagement.DoctorManagement.domain;
 
-import com.doctorManagement.DoctorManagement.dto.CepDTO;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 @Entity
@@ -25,21 +23,22 @@ public class Doctor implements Serializable {
 
     private long cellPhone;
 
-    private CepDTO cep;
 
-    @OneToMany()
-    @JoinColumn(name="medicalSpecialty_id")
-    private List<MedicalSpecialty> medicalSpecialty = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "tb_doctor_medicalSpecialty", joinColumns = @JoinColumn(name = "doctor_id"), inverseJoinColumns = @JoinColumn(name = "medicalSpecialty_id"))
+    private Set<MedicalSpecialty> medicalSpecialty= new HashSet<>();
 
     public Doctor(){
 
     }
-    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone) {
+    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone,Set<MedicalSpecialty> medicalSpecialty) {
         this.id = id;
         this.name = name;
         this.CRM = CRM;
         this.landline = landline;
         this.cellPhone = cellPhone;
+        this.medicalSpecialty = medicalSpecialty;
     }
 
     public Integer getId() {
@@ -82,18 +81,10 @@ public class Doctor implements Serializable {
         this.cellPhone = cellPhone;
     }
 
-    public CepDTO getCep() {
-        return cep;
-    }
 
-    public void setCep(CepDTO cep) {
-        this.cep = cep;
-    }
-
-    public List<MedicalSpecialty> getMedicalSpecialty() {
+    public Set<MedicalSpecialty> getMedicalSpecialty() {
         return medicalSpecialty;
     }
-
 
     @Override
     public boolean equals(Object o) {

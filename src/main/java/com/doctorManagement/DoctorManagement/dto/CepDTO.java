@@ -1,19 +1,12 @@
 package com.doctorManagement.DoctorManagement.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
-import java.util.Objects;
 
-@Entity
+import java.io.Serializable;
+
+
 public class CepDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     private String cep;
     private String logradouro;
@@ -37,13 +30,6 @@ public class CepDTO implements Serializable {
         this.ibge = ibge;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getCep() {
         return cep;
@@ -101,16 +87,4 @@ public class CepDTO implements Serializable {
         this.ibge = ibge;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CepDTO cepDTO = (CepDTO) o;
-        return id.equals(cepDTO.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

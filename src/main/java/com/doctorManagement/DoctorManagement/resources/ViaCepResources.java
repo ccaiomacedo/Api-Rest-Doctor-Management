@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RestController
-public class ViaCepController implements Serializable {
+public class ViaCepResources implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
