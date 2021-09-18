@@ -40,7 +40,7 @@ public class DoctorService {
     }
 
 
-    @Transactional
+    @Transactional()
     public DoctorDTO insert(DoctorDTO objdto){
         objdto.setId(null);
         Doctor obj = new Doctor();

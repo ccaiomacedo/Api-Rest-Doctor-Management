@@ -5,6 +5,7 @@ import com.doctorManagement.DoctorManagement.domain.MedicalSpecialty;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,10 +26,15 @@ public class DoctorDTO implements Serializable {
     @Digits(integer = 7,message = "O tamanho máximo deve ser de 7 caracteres",fraction = 0)
     private Integer crm;
 
+
     private long landline;
+
+
     private long cellPhone;
 
+
     private Integer cep;
+
     private String logradouro;
     private String bairro;
     private String localidade;
