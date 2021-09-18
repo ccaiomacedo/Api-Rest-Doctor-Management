@@ -32,7 +32,7 @@ public class Doctor implements Serializable {
 
 
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany()
     @JoinTable(name = "tb_doctor_medicalSpecialty", joinColumns = @JoinColumn(name = "doctor_id"), inverseJoinColumns = @JoinColumn(name = "medicalSpecialty_id"))
     private Set<MedicalSpecialty> medicalSpecialty= new HashSet<>();
 

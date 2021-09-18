@@ -5,6 +5,7 @@ import com.doctorManagement.DoctorManagement.dto.DoctorDTO;
 import com.doctorManagement.DoctorManagement.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -32,10 +33,11 @@ public class DoctorResources {
         return ResponseEntity.created(uri).body(doctorService.insert(objDto));
     }
 
+    @Transactional(readOnly = true)
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<DoctorDTO>> findAll(){
         List<Doctor> list = doctorService.findAll();
-        List<DoctorDTO> listDto = list.stream().map(obj -> new DoctorDTO(obj)).collect(Collectors.toList());
+        List<DoctorDTO> listDto = list.stream().map(obj -> new DoctorDTO(obj,obj.getMedicalSpecialty())).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDto);
     }
 
