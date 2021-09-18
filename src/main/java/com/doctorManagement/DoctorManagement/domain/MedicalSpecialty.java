@@ -1,5 +1,7 @@
 package com.doctorManagement.DoctorManagement.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,6 +16,7 @@ public class MedicalSpecialty implements Serializable {
     private Integer id;
     private String name;
 
+    @JsonIgnore
     @ManyToMany( mappedBy = "medicalSpecialty")
     private Set<Doctor> doctors = new HashSet<>();
 
