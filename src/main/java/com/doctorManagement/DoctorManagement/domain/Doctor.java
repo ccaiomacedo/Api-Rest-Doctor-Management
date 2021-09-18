@@ -52,6 +52,16 @@ public class Doctor implements Serializable {
         this.uf = uf;
     }
 
+    public Doctor(Integer id, String name, Integer crm, long landline, long cellPhone, Integer cep,Set<MedicalSpecialty> medicalSpecialty) {
+        this.id = id;
+        this.name = name;
+        this.crm = crm;
+        this.landline = landline;
+        this.cellPhone = cellPhone;
+        this.cep = cep;
+        this.medicalSpecialty = medicalSpecialty;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -95,6 +105,10 @@ public class Doctor implements Serializable {
 
     public Set<MedicalSpecialty> getMedicalSpecialty() {
         return medicalSpecialty;
+    }
+
+    public void setMedicalSpecialty(Set<MedicalSpecialty> medicalSpecialty) {
+        this.medicalSpecialty = medicalSpecialty;
     }
 
     public Integer getCep() {

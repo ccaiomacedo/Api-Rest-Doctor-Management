@@ -32,6 +32,10 @@ public class DoctorResources {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(objDto.getId()).toUri();
         return ResponseEntity.created(uri).body(doctorService.insert(objDto));
     }
+    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    public ResponseEntity<DoctorDTO> update(@Valid @PathVariable Integer id, @RequestBody DoctorDTO objDto){
+            return ResponseEntity.ok().body(doctorService.update(id,objDto));
+    }
 
     @Transactional(readOnly = true)
     @RequestMapping(method = RequestMethod.GET)

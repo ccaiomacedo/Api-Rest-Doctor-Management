@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,6 +51,17 @@ public class DoctorService {
         return new DoctorDTO(obj,obj.getMedicalSpecialty());
     }
 
+    @Transactional
+    public DoctorDTO update(Integer id,DoctorDTO doctorDTO){
+        try {
+            Doctor aux = updateDataAux(id, doctorDTO);
+            MinimumMedicalSpecialty.minimumLimit(doctorDTO);
+            doctorRepository.save(aux);
+            return new DoctorDTO(aux, aux.getMedicalSpecialty());
+        }catch (EntityNotFoundException e){
+            throw  new ObjectNotFoundException("Id não encontrado: "+id);
+        }
+    }
 
     private Doctor doctorDtoToDoctor(Doctor doctor, DoctorDTO doctorDTO){
         doctor.setName(doctorDTO.getName());
@@ -136,5 +148,31 @@ public class DoctorService {
         return obj.orElseThrow(()-> new ObjectNotFoundException(
                 "Objeto não encontrado! Bairro: "+bairro+", Tipo: "+Doctor.class.getName()));
     }
+
+    private Doctor updateDataAux(Integer id,DoctorDTO doctorDTO){
+        Doctor doctor = doctorRepository.getById(id);
+        doctor.setName(doctorDTO.getName());
+        doctor.setCrm(doctorDTO.getCrm());
+        doctor.setLandline(doctorDTO.getLandline());
+        doctor.setCellPhone(doctorDTO.getCellPhone());
+        doctor.setCep(doctorDTO.getCep());
+        updateAddressAux(doctor);
+        for(MedicalSpecialtyDTO medicalSpecialtyDTO : doctorDTO.getMedicalSpecialty()){
+            MedicalSpecialty aux = medicalSpecialtyRepository.getById(medicalSpecialtyDTO.getId());
+            doctor.getMedicalSpecialty().add(aux);
+        }
+        return doctor;
+    }
+
+    private Doctor updateAddressAux(Doctor doctor){
+        AddressDTO addressDTO = viaCepService.doFindCep(doctor.getCep());
+        doctor.setLocalidade(addressDTO.getLocalidade());
+        doctor.setLogradouro(addressDTO.getLogradouro());
+        doctor.setBairro(addressDTO.getBairro());
+        doctor.setUf(addressDTO.getUf());
+
+        return doctor;
+    }
+
 
 }

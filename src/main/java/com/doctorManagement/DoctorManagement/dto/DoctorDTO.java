@@ -4,7 +4,6 @@ import com.doctorManagement.DoctorManagement.domain.Doctor;
 import com.doctorManagement.DoctorManagement.domain.MedicalSpecialty;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -147,5 +146,9 @@ public class DoctorDTO implements Serializable {
 
     public List<MedicalSpecialtyDTO> getMedicalSpecialty() {
         return medicalSpecialty;
+    }
+
+    public void setMedicalSpecialty(List<MedicalSpecialtyDTO> medicalSpecialty) {
+        this.medicalSpecialty = medicalSpecialty;
     }
 }

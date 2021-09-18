@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface DoctorRepository extends JpaRepository<Doctor,Integer>{
 
+
     Optional<Doctor> findByNameIgnoreCase(String name);
 
     Doctor findByCrm(Integer crm);
