@@ -7,7 +7,9 @@ import com.doctorManagement.DoctorManagement.dto.DoctorDTO;
 import com.doctorManagement.DoctorManagement.dto.MedicalSpecialtyDTO;
 import com.doctorManagement.DoctorManagement.repository.DoctorRepository;
 import com.doctorManagement.DoctorManagement.repository.MedicalSpecialtyRepository;
+import com.doctorManagement.DoctorManagement.services.exceptions.MinimumMedicalSpecialtyException;
 import com.doctorManagement.DoctorManagement.services.exceptions.ObjectNotFoundException;
+import com.doctorManagement.DoctorManagement.utils.MinimumMedicalSpecialty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +45,7 @@ public class DoctorService {
         objdto.setId(null);
         Doctor obj = new Doctor();
         doctorDtoToDoctor(obj,objdto);
+        MinimumMedicalSpecialty.minimumLimit(objdto);
         doctorRepository.save(obj);
         return new DoctorDTO(obj,obj.getMedicalSpecialty());
     }
@@ -76,8 +79,6 @@ public class DoctorService {
 
         return doctor;
     }
-
-
 
 
 }
