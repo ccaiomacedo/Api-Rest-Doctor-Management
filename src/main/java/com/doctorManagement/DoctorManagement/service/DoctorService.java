@@ -157,6 +157,7 @@ public class DoctorService {
         doctor.setCellPhone(doctorDTO.getCellPhone());
         doctor.setCep(doctorDTO.getCep());
         updateAddressAux(doctor);
+        doctor.getMedicalSpecialty().clear();
         for(MedicalSpecialtyDTO medicalSpecialtyDTO : doctorDTO.getMedicalSpecialty()){
             MedicalSpecialty aux = medicalSpecialtyRepository.getById(medicalSpecialtyDTO.getId());
             doctor.getMedicalSpecialty().add(aux);
