@@ -30,7 +30,6 @@ public class DoctorDTO implements Serializable {
 
     private Integer cep;
     private String logradouro;
-    private String complemento;
     private String bairro;
     private String localidade;
     private String uf;
@@ -50,7 +49,6 @@ public class DoctorDTO implements Serializable {
         cellPhone = obj.getCellPhone();
         cep = obj.getCep();
         logradouro = obj.getLogradouro();
-        complemento = obj.getComplemento();
         bairro = obj.getBairro();
         localidade = obj.getLocalidade();
         uf = obj.getUf();
@@ -114,14 +112,6 @@ public class DoctorDTO implements Serializable {
 
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
     }
 
     public String getBairro() {

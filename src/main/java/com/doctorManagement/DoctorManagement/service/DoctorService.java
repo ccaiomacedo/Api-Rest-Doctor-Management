@@ -7,7 +7,6 @@ import com.doctorManagement.DoctorManagement.dto.DoctorDTO;
 import com.doctorManagement.DoctorManagement.dto.MedicalSpecialtyDTO;
 import com.doctorManagement.DoctorManagement.repository.DoctorRepository;
 import com.doctorManagement.DoctorManagement.repository.MedicalSpecialtyRepository;
-import com.doctorManagement.DoctorManagement.services.exceptions.MinimumMedicalSpecialtyException;
 import com.doctorManagement.DoctorManagement.services.exceptions.ObjectNotFoundException;
 import com.doctorManagement.DoctorManagement.utils.MinimumMedicalSpecialty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +38,7 @@ public class DoctorService {
     public List<Doctor> findAll(){
         return doctorRepository.findAll();
     }
+
 
     @Transactional
     public DoctorDTO insert(DoctorDTO objdto){
@@ -72,7 +72,6 @@ public class DoctorService {
     private Doctor addressDTOToViaCep(Doctor doctor){
         AddressDTO addressDTO = viaCepService.doFindCep(doctor.getCep());
         doctor.setBairro(addressDTO.getBairro());
-        doctor.setComplemento(addressDTO.getComplemento());
         doctor.setLocalidade(addressDTO.getLocalidade());
         doctor.setLogradouro(addressDTO.getLogradouro());
         doctor.setUf(addressDTO.getUf());
@@ -80,5 +79,62 @@ public class DoctorService {
         return doctor;
     }
 
+    public Doctor findByName(String name){
+        Optional<Doctor> obj = doctorRepository.findByNameIgnoreCase(name);
+        return obj.orElseThrow(()-> new ObjectNotFoundException(
+                "Objeto não encontrado! Nome: "+name+", Tipo: "+Doctor.class.getName()));
+    }
+    public Doctor findByCrm(Integer crm){
+        Doctor obj = doctorRepository.findByCrm(crm);
+        if(obj==null){
+            throw new ObjectNotFoundException( "Objeto não encontrado! CRM: "+crm+", Tipo: "+Doctor.class.getName());
+        }else{
+            return obj;
+        }
+
+    }
+    public Doctor findByCellPhone(long cellPhone){
+        Doctor obj = doctorRepository.findByCellPhone(cellPhone);
+        if(obj==null){
+            throw new ObjectNotFoundException( "Objeto não encontrado! CellPhone: "+cellPhone+", Tipo: "+Doctor.class.getName());
+        }else{
+            return obj;
+        }
+
+    }
+    public Doctor findByLandline(long landline){
+        Doctor obj = doctorRepository.findByLandline(landline);
+        if(obj==null){
+            throw new ObjectNotFoundException( "Objeto não encontrado! Landline: "+landline+", Tipo: "+Doctor.class.getName());
+        }else{
+            return obj;
+        }
+
+    }
+    public Doctor findByLogradouro(String logradouro){
+        Optional<Doctor> obj = doctorRepository.findByLogradouroIgnoreCase(logradouro);
+        return obj.orElseThrow(()-> new ObjectNotFoundException(
+                "Objeto não encontrado! Logradouro: "+logradouro+", Tipo: "+Doctor.class.getName()));
+    }
+    public Doctor findByCep(Integer cep){
+        Optional<Doctor> obj = doctorRepository.findByCep(cep);
+        return obj.orElseThrow(()-> new ObjectNotFoundException(
+                "Objeto não encontrado! Cep: "+cep+", Tipo: "+Doctor.class.getName()));
+    }
+    public Doctor findByUf(String uf){
+        Optional<Doctor> obj = doctorRepository.findByUfIgnoreCase(uf);
+        return obj.orElseThrow(()-> new ObjectNotFoundException(
+                "Objeto não encontrado! Uf: "+uf+", Tipo: "+Doctor.class.getName()));
+    }
+    public Doctor findByLocalidade(String localidade){
+        Optional<Doctor> obj = doctorRepository.findByLocalidadeIgnoreCase(localidade);
+        return obj.orElseThrow(()-> new ObjectNotFoundException(
+                "Objeto não encontrado! Localidade: "+localidade+", Tipo: "+Doctor.class.getName()));
+    }
+    public Doctor findByBairro(String bairro){
+        Optional<Doctor> obj = doctorRepository.findByBairroIgnoreCase(bairro);
+        return obj.orElseThrow(()-> new ObjectNotFoundException(
+                "Objeto não encontrado! Bairro: "+bairro+", Tipo: "+Doctor.class.getName()));
+    }
 
 }

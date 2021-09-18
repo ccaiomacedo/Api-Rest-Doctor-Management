@@ -41,4 +41,51 @@ public class DoctorResources {
         return ResponseEntity.ok().body(listDto);
     }
 
+    @RequestMapping(value ="/by-name/{name}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByName(@PathVariable String name){
+        Doctor obj = doctorService.findByName(name);
+        return ResponseEntity.ok().body(obj);
+    }
+
+    @RequestMapping(value ="/by-landline/{landline}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByLandline(@PathVariable long landline){
+        Doctor obj = doctorService.findByLandline(landline);
+        return ResponseEntity.ok().body(obj);
+    }
+    @RequestMapping(value ="/by-cellPhone/{cellPhone}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByCellPhone(@PathVariable long cellPhone){
+        Doctor obj = doctorService.findByCellPhone(cellPhone);
+        return ResponseEntity.ok().body(obj);
+    }
+    @RequestMapping(value ="/by-cep/{cep}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByCep(@PathVariable Integer cep){
+        Doctor obj = doctorService.findByCep(cep);
+        return ResponseEntity.ok().body(obj);
+    }   @RequestMapping(value ="/by-logradouro/{logradouro}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByLogradouro(@PathVariable String logradouro){
+        Doctor obj = doctorService.findByLogradouro(logradouro);
+        return ResponseEntity.ok().body(obj);
+    }
+    @RequestMapping(value ="/by-localidade/{localidade}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByLocalidade(@PathVariable String localidade){
+        Doctor obj = doctorService.findByLocalidade(localidade);
+        return ResponseEntity.ok().body(obj);
+    }
+    @RequestMapping(value ="/by-bairro/{bairro}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByBairro(@PathVariable String bairro){
+        Doctor obj = doctorService.findByBairro(bairro);
+        return ResponseEntity.ok().body(obj);
+    }
+    @RequestMapping(value ="/by-uf/{uf}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByUf(@PathVariable String uf){
+        Doctor obj = doctorService.findByUf(uf);
+        return ResponseEntity.ok().body(obj);
+    }
+    @RequestMapping(value ="/by-crm/{crm}",method = RequestMethod.GET)
+    public ResponseEntity<Doctor> findByCrm(@PathVariable Integer crm){
+        Doctor obj = doctorService.findByCrm(crm);
+        return ResponseEntity.ok().body(obj);
+    }
+
+
 }

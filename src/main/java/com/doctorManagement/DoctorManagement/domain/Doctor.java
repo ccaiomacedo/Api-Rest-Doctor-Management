@@ -25,7 +25,6 @@ public class Doctor implements Serializable {
 
     private Integer cep;
     private String logradouro;
-    private String complemento;
     private String bairro;
     private String localidade;
     private String uf;
@@ -40,7 +39,7 @@ public class Doctor implements Serializable {
 
     }
 
-    public Doctor(Integer id, String name, Integer crm, long landline, long cellPhone, Integer cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
+    public Doctor(Integer id, String name, Integer crm, long landline, long cellPhone, Integer cep, String logradouro,String bairro, String localidade, String uf) {
         this.id = id;
         this.name = name;
         this.crm = crm;
@@ -48,7 +47,6 @@ public class Doctor implements Serializable {
         this.cellPhone = cellPhone;
         this.cep = cep;
         this.logradouro = logradouro;
-        this.complemento = complemento;
         this.bairro = bairro;
         this.localidade = localidade;
         this.uf = uf;
@@ -115,13 +113,6 @@ public class Doctor implements Serializable {
         this.logradouro = logradouro;
     }
 
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
 
     public String getBairro() {
         return bairro;
