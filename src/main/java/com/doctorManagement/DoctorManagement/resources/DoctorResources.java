@@ -6,7 +6,10 @@ import com.doctorManagement.DoctorManagement.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +24,12 @@ public class DoctorResources {
     public ResponseEntity<Doctor> find(@PathVariable Integer id){
         Doctor obj = doctorService.find(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<DoctorDTO> insert(@Valid @RequestBody DoctorDTO objDto){
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(objDto.getId()).toUri();
+        return ResponseEntity.created(uri).body(doctorService.insert(objDto));
     }
 
     @RequestMapping(method = RequestMethod.GET)

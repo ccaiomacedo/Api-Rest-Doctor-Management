@@ -11,7 +11,6 @@ public class MedicalSpecialtyDTO {
 
     }
 
-
     public MedicalSpecialtyDTO(MedicalSpecialty medicalSpecialty) {
         id = medicalSpecialty.getId();
         name = medicalSpecialty.getName();

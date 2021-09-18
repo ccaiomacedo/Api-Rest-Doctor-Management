@@ -4,40 +4,29 @@ package com.doctorManagement.DoctorManagement.dto;
 import java.io.Serializable;
 
 
-public class CepDTO implements Serializable {
+public class AddressDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    private String cep;
     private String logradouro;
     private String complemento;
     private String bairro;
     private String localidade;
     private String uf;
-    private String ibge;
 
-    public CepDTO() {
+    public AddressDTO() {
 
     }
 
-    public CepDTO(String cep, String logradouro, String complemento, String bairro, String localidade, String uf, String ibge) {
-        this.cep = cep;
+    public AddressDTO(String logradouro, String complemento, String bairro, String localidade, String uf) {
         this.logradouro = logradouro;
         this.complemento = complemento;
         this.bairro = bairro;
         this.localidade = localidade;
         this.uf = uf;
-        this.ibge = ibge;
     }
 
 
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
 
     public String getLogradouro() {
         return logradouro;
@@ -79,12 +68,15 @@ public class CepDTO implements Serializable {
         this.uf = uf;
     }
 
-    public String getIbge() {
-        return ibge;
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("AddressDTO{");
+        sb.append("logradouro='").append(logradouro).append('\'');
+        sb.append(", complemento='").append(complemento).append('\'');
+        sb.append(", bairro='").append(bairro).append('\'');
+        sb.append(", localidade='").append(localidade).append('\'');
+        sb.append(", uf='").append(uf).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
-
-    public void setIbge(String ibge) {
-        this.ibge = ibge;
-    }
-
 }

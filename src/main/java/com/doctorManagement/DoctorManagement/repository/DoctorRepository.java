@@ -7,5 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 //derived query
 public interface DoctorRepository extends JpaRepository<Doctor,Integer>{
 
-
 }

@@ -17,11 +17,18 @@ public class Doctor implements Serializable {
 
     private String name;
 
-    private long CRM;
+    private Integer crm;
 
     private long landline;
 
     private long cellPhone;
+
+    private Integer cep;
+    private String logradouro;
+    private String complemento;
+    private String bairro;
+    private String localidade;
+    private String uf;
 
 
 
@@ -32,13 +39,19 @@ public class Doctor implements Serializable {
     public Doctor(){
 
     }
-    public Doctor(Integer id, String name, long CRM, long landline, long cellPhone,Set<MedicalSpecialty> medicalSpecialty) {
+
+    public Doctor(Integer id, String name, Integer crm, long landline, long cellPhone, Integer cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
         this.id = id;
         this.name = name;
-        this.CRM = CRM;
+        this.crm = crm;
         this.landline = landline;
         this.cellPhone = cellPhone;
-        this.medicalSpecialty = medicalSpecialty;
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
     }
 
     public Integer getId() {
@@ -57,12 +70,12 @@ public class Doctor implements Serializable {
         this.name = name;
     }
 
-    public long getCRM() {
-        return CRM;
+    public Integer getCrm() {
+        return crm;
     }
 
-    public void setCRM(long CRM) {
-        this.CRM = CRM;
+    public void setCrm(Integer crm) {
+        this.crm = crm;
     }
 
     public long getLandline() {
@@ -86,6 +99,56 @@ public class Doctor implements Serializable {
         return medicalSpecialty;
     }
 
+    public Integer getCep() {
+        return cep;
+    }
+
+    public void setCep(Integer cep) {
+        this.cep = cep;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -98,4 +161,6 @@ public class Doctor implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }
