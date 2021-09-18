@@ -3,10 +3,10 @@ package com.doctorManagement.DoctorManagement.dto;
 import com.doctorManagement.DoctorManagement.domain.Doctor;
 import com.doctorManagement.DoctorManagement.domain.MedicalSpecialty;
 import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +22,17 @@ public class DoctorDTO implements Serializable {
     @Length(max=120,message = "O tamanho máximo deve ser de 120 caracteres")
     private String name;
 
-
+    @NotNull(message = "Preenchimento obrigatório")
     @Digits(integer = 7,message = "O tamanho máximo deve ser de 7 caracteres",fraction = 0)
     private Integer crm;
 
-
+    @Digits(integer = 15,message = "O tamanho máximo deve ser de 15 caracteres",fraction = 0)
     private long landline;
 
-
+    @Digits(integer = 15,message = "O tamanho máximo deve ser de 15 caracteres",fraction = 0)
     private long cellPhone;
 
-
+    @NotNull(message = "Preenchimento obrigatório")
     private Integer cep;
 
     private String logradouro;
