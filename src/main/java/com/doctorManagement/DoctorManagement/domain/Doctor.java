@@ -68,6 +68,15 @@ public class Doctor implements Serializable {
         this.medicalSpecialty = medicalSpecialty;
     }
 
+    public Doctor(Integer id, String name, Integer crm, long landline, long cellPhone, Integer cep) {
+        this.id = id;
+        this.name = name;
+        this.crm = crm;
+        this.landline = landline;
+        this.cellPhone = cellPhone;
+        this.cep = cep;
+    }
+
     public boolean isDeleted() {
         return deleted;
     }
