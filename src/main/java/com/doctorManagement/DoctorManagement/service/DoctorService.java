@@ -7,6 +7,7 @@ import com.doctorManagement.DoctorManagement.dto.DoctorDTO;
 import com.doctorManagement.DoctorManagement.dto.MedicalSpecialtyDTO;
 import com.doctorManagement.DoctorManagement.repository.DoctorRepository;
 import com.doctorManagement.DoctorManagement.repository.MedicalSpecialtyRepository;
+import com.doctorManagement.DoctorManagement.services.exceptions.DataIntegrityViolationException;
 import com.doctorManagement.DoctorManagement.services.exceptions.ObjectNotFoundException;
 import com.doctorManagement.DoctorManagement.utils.MinimumMedicalSpecialty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,14 @@ public class DoctorService {
             return new DoctorDTO(aux, aux.getMedicalSpecialty());
         }catch (EntityNotFoundException e){
             throw  new ObjectNotFoundException("Id não encontrado: "+id);
+        }
+    }
+    public void delete(Integer id){
+        find(id);
+        try {
+            doctorRepository.deleteById(id);
+        }catch (DataIntegrityViolationException e){
+            throw new DataIntegrityViolationException("Não é possível excluir porque há objetos relacionados");
         }
     }
 

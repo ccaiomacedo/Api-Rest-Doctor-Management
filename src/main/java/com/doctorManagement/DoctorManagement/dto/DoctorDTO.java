@@ -2,6 +2,7 @@ package com.doctorManagement.DoctorManagement.dto;
 
 import com.doctorManagement.DoctorManagement.domain.Doctor;
 import com.doctorManagement.DoctorManagement.domain.MedicalSpecialty;
+import lombok.Builder;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
@@ -10,7 +11,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
 
 public class DoctorDTO implements Serializable {
     private static final long serialVersionUID=1l;

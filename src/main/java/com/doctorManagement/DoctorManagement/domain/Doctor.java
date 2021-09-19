@@ -2,10 +2,10 @@ package com.doctorManagement.DoctorManagement.domain;
 
 
 
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
-
 
 @Entity
 public class Doctor implements Serializable {

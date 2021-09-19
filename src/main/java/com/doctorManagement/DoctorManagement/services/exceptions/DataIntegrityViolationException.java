@@ -1,9 +1,9 @@
 package com.doctorManagement.DoctorManagement.services.exceptions;
 
-public class ObjectNotFoundException extends RuntimeException {
+public class DataIntegrityViolationException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
-    public ObjectNotFoundException(String msg) {
+    public DataIntegrityViolationException(String msg) {
         super(msg);
     }
 

@@ -37,6 +37,12 @@ public class DoctorResources {
             return ResponseEntity.ok().body(doctorService.update(id,objDto));
     }
 
+    @RequestMapping(value = "/{id}",method=RequestMethod.DELETE)
+    public ResponseEntity<DoctorDTO> delete(@PathVariable Integer id){
+        doctorService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @Transactional(readOnly = true)
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<DoctorDTO>> findAll(){
