@@ -31,6 +31,11 @@ public class MedicalSpecialty implements Serializable {
         this.doctors = doctors;
     }
 
+    public MedicalSpecialty(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }

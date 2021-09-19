@@ -1,13 +1,14 @@
 package com.doctorManagement.DoctorManagement.domain;
 
-
-
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
 @Entity
+@Table(name = "tb_doctor")
+@SQLDelete(sql = "UPDATE tb_doctor SET deleted = true WHERE id=?")
 public class Doctor implements Serializable {
     private static final long serialVersionUID=1l;
 
@@ -24,6 +25,9 @@ public class Doctor implements Serializable {
     private long cellPhone;
 
     private Integer cep;
+
+    private boolean deleted = Boolean.FALSE;
+
     private String logradouro;
     private String bairro;
     private String localidade;
@@ -60,6 +64,14 @@ public class Doctor implements Serializable {
         this.cellPhone = cellPhone;
         this.cep = cep;
         this.medicalSpecialty = medicalSpecialty;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public Integer getId() {
