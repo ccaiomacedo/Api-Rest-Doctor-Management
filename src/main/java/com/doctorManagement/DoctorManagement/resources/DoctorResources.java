@@ -38,7 +38,7 @@ public class DoctorResources {
     }
 
     @RequestMapping(value = "/{id}",method=RequestMethod.DELETE)
-    public ResponseEntity<DoctorDTO> delete(@PathVariable Integer id){
+    public ResponseEntity<Doctor> delete(@PathVariable Integer id){
         doctorService.delete(id);
         return ResponseEntity.noContent().build();
     }

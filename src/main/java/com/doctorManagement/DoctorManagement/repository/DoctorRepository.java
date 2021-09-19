@@ -26,5 +26,4 @@ public interface DoctorRepository extends JpaRepository<Doctor,Integer>{
 
     Optional<Doctor>  findByBairroIgnoreCase(String bairro);
 
-
 }

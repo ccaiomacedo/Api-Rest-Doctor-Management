@@ -34,7 +34,6 @@ public class DoctorDTO implements Serializable {
     @NotNull(message = "Preenchimento obrigatório")
     private Integer cep;
 
-    private boolean deleted = Boolean.FALSE;
 
     private String logradouro;
     private String bairro;
@@ -63,14 +62,6 @@ public class DoctorDTO implements Serializable {
     public DoctorDTO(Doctor doctor, Set<MedicalSpecialty> medicalSpecialty){
         this(doctor);
         medicalSpecialty.forEach(x -> this.medicalSpecialty.add(new MedicalSpecialtyDTO(x)));
-    }
-
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
     }
 
     public Integer getId() {

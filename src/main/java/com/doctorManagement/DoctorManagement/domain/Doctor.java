@@ -1,6 +1,7 @@
 package com.doctorManagement.DoctorManagement.domain;
 
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,9 +9,10 @@ import java.util.*;
 
 @Entity
 @Table(name = "tb_doctor")
-@SQLDelete(sql = "UPDATE tb_doctor SET deleted = true WHERE id=?")
+@SQLDelete(sql = "update tb_doctor SET deleted = true WHERE id=?")
+@Where(clause ="deleted=false")
 public class Doctor implements Serializable {
-    private static final long serialVersionUID=1l;
+    private static final long serialVersionUID=1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,10 +70,6 @@ public class Doctor implements Serializable {
 
     public boolean isDeleted() {
         return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
     }
 
     public Integer getId() {

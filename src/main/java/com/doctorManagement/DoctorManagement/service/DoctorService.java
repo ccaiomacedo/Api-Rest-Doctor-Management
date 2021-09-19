@@ -66,7 +66,7 @@ public class DoctorService {
     public void delete(Integer id){
         find(id);
         try {
-            doctorRepository.deleteById(id);
+           doctorRepository.deleteById(id);
         }catch (DataIntegrityViolationException e){
             throw new DataIntegrityViolationException("Não é possível excluir porque há objetos relacionados");
         }
