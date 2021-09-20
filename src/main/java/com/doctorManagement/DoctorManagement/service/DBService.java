@@ -35,6 +35,7 @@ public class DBService {
         MedicalSpecialty medicalSpecialty7 = new MedicalSpecialty(null,"Cirurgia cardiaca");
         MedicalSpecialty medicalSpecialty8 = new MedicalSpecialty(null,"Cirurgia de toráx");
 
+
         medicalSpecialtySet1.add(medicalSpecialty);
         medicalSpecialtySet1.add(medicalSpecialty2);
         medicalSpecialtySet1.add(medicalSpecialty3);
@@ -55,10 +56,10 @@ public class DBService {
         medicalSpecialtyRepository.save(medicalSpecialty8);
 
 
-        Doctor doctor = new Doctor(null,"Caio", 4234, 423424, 999568540,41720100);
+        Doctor doctor = new Doctor(null,"Caio", 4234, 33423424, 999568540,41720100);
         DoctorDTO doctorDTO= new DoctorDTO(doctor,medicalSpecialtySet1);
 
-        Doctor doctor2 = new Doctor(null,"Leonardo", 5435, 97897, 995976459, 60874648);
+        Doctor doctor2 = new Doctor(null,"Leonardo", 5435, 33978976, 995976459, 60874648);
         DoctorDTO doctorDTO2 = new DoctorDTO(doctor2,medicalSpecialtySet2);
 
         doctorService.insert(doctorDTO);

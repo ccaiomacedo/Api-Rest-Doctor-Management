@@ -1,4 +1,3 @@
-
 INSERT INTO medical_specialty(name) values ('ALERGOLOGIA');
 INSERT INTO medical_specialty(name) values ('ANGIOLOGIA');
 INSERT INTO medical_specialty(name) values ('BUCO_MAXILO');
