@@ -18,8 +18,7 @@ create table medical_specialty (
                                    id integer not null auto_increment,
                                    name varchar(255),
                                    primary key (id)
-) engine=InnoDB
-
+) engine=InnoDB;
 
 create table tb_doctor (
                            id integer not null auto_increment,
@@ -34,13 +33,13 @@ create table tb_doctor (
                            name varchar(255),
                            uf varchar(255),
                            primary key (id)
-) engine=InnoDB
+) engine=InnoDB;
 
 create table tb_doctor_medical_specialty (
                                              doctor_id integer not null,
                                              medical_specialty_id integer not null,
                                              primary key (doctor_id, medical_specialty_id)
-) engine=InnoDB
+) engine=InnoDB;
 
 alter table tb_doctor_medical_specialty
     add constraint FKnnv6a3j4dhq4hc7k5lmcu1tkd
@@ -51,13 +50,3 @@ alter table tb_doctor_medical_specialty
     add constraint FKfl5rmwkt9rwc9raa6ccmbg4xc
         foreign key (doctor_id)
             references tb_doctor (id);
-
-
-    INSERT INTO medical_specialty(name) values ('ALERGOLOGIA');
-    INSERT INTO medical_specialty(name) values ('ANGIOLOGIA');
-    INSERT INTO medical_specialty(name) values ('BUCO_MAXILO');
-    INSERT INTO medical_specialty(name) values ('CARDIOLOGIA_CLINICA');
-    INSERT INTO medical_specialty(name) values ('CARDIOLOGIA_INFANTIL');
-    INSERT INTO medical_specialty(name) values ('CIRURGIA_CABECA_E_PESCOCO');
-    INSERT INTO medical_specialty(name) values ('CIRURGIA_CARDIACA');
-    INSERT INTO medical_specialty(name) values ('CIRURGIA_DE_TORAX');
