@@ -1,5 +1,7 @@
 package com.doctorManagement.DoctorManagement.resources.exceptions;
 
+import com.doctorManagement.DoctorManagement.services.exceptions.AddressNotFoundException;
+import com.doctorManagement.DoctorManagement.services.exceptions.InvalidFormatZipCodeException;
 import com.doctorManagement.DoctorManagement.services.exceptions.MinimumMedicalSpecialtyException;
 import com.doctorManagement.DoctorManagement.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -16,7 +18,6 @@ public class ResourceExceptionHandler {
 
     @ExceptionHandler(ObjectNotFoundException.class)
     public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request){
-
         StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(),e.getMessage(),System.currentTimeMillis());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
     }
@@ -26,6 +27,18 @@ public class ResourceExceptionHandler {
         StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(),e.getMessage(),System.currentTimeMillis());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ResponseEntity<StandardError> addressNotFound(AddressNotFoundException e, HttpServletRequest request){
+        StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(),"Address not found",System.currentTimeMillis());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
+    @ExceptionHandler(InvalidFormatZipCodeException.class)
+    public ResponseEntity<StandardError> invalidFormatZipCode(InvalidFormatZipCodeException e, HttpServletRequest request){
+        StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(),"Cep Inválido",System.currentTimeMillis());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+    }
+
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<StandardError> validation(MethodArgumentNotValidException e,HttpServletRequest request){
 

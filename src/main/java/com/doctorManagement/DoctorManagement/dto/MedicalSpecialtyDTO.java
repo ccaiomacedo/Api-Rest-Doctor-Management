@@ -16,6 +16,7 @@ public class MedicalSpecialtyDTO {
         name = medicalSpecialty.getName();
     }
 
+
     public Integer getId() {
         return id;
     }

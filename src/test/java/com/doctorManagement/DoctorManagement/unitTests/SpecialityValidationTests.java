@@ -31,7 +31,6 @@ public class SpecialityValidationTests {
 
     }
 
-
     private DoctorDTO mockDoctorDTO() {
 
         DoctorDTO doctor = new DoctorDTO(new Doctor(1, "Name", 1234, 12345678, 7654321, 41490352, "logradouro",
