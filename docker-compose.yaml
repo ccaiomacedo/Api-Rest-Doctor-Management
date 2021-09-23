@@ -1,0 +1,8 @@
+version: '3'
+services:
+  doctorManagement-servers:
+    image: doctor-management:latest
+
+
+
+
