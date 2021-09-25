@@ -52,7 +52,6 @@ alter table tb_doctor_medical_specialty
 drop
 foreign key FKfl5rmwkt9rwc9raa6ccmbg4xc;
 
-
 INSERT INTO medical_specialty(name) values ('ALERGOLOGIA');
 INSERT INTO medical_specialty(name) values ('ANGIOLOGIA');
 INSERT INTO medical_specialty(name) values ('BUCO_MAXILO');
@@ -67,7 +66,7 @@ insert into
     tb_doctor
 (bairro, cell_phone, cep, crm, deleted, landline, localidade, logradouro, name, uf)
 values
-    ("Imbui", 324324, 41720100, 5364,false,2342,"Salvador", "Rua das patativas","Caio", "BA");
+    ("Imbui", 99580560, 41720100, 5364,false,33646461,"Salvador", "Rua das patativas","Caio", "BA");
 
 insert
 into

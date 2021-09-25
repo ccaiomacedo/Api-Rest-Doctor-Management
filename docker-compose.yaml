@@ -1,8 +1,39 @@
 version: '3'
 services:
-  doctorManagement-servers:
+  doctor-management:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
     image: doctor-management:latest
-
-
+    ports:
+      - '8080:8080'
+      - '5005:5005'
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xmx1G -Xms128m -XX:MaxMetaspaceSize=128m
+      - PROFILE=dev
+    links:
+      - db
+  db:
+    image: mysql:5.7
+    ports:
+      - '3309:3306'
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=doctorManagement
+      - MYSQL_USER=caio
+      - MYSQL_ROOT_PASSWORD=caio123
+      - MYSQL_PASSWORD=caio123
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+        - ./docker/volume_mysql:/var/lib/mysql
+  flyway:
+    image: flyway/flyway:latest
+    command: -url=jdbc:mysql://db:3306/doctorManagement -user=caio -password=caio123 -connectRetries=60 migrate
+    volumes:
+      - ./db/migration/:/flyway/sql/
+    links:
+      - db
+    depends_on:
+      - db
 
 

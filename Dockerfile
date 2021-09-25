@@ -1,11 +1,18 @@
-FROM openjdk:8-jdk-alpine
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-Xmx512m","-Dserver.port=${8080:8080}","-jar","/app.jar"]
+FROM openjdk:11
 
-# Derivando da imagem oficial do MySQL
-FROM mysql:5.7
-# Adicionando os scripts SQL para serem executados na criação do banco
-COPY src/main/resources/db/ /docker-entrypoint-initdb.d/
+ARG PROFILE
+ARG ADDITTIONAL_OPTS
+
+ENV PROFILE=${PROFILE}
+ENV ADDITIONAL_OPTS=${ADDITIONAL_OPTS}
+
+WORKDIR /opt/doctor-management
+
+COPY /target/DoctorManagement-0.0.1-SNAPSHOT*.jar DoctorManagement-0.0.1-SNAPSHOT.jar
+
+SHELL ["/bin/sh", "-c"]
+
+EXPOSE 5005
+EXPOSE 8080
+
+CMD java ${ADDITIONAL_OPTS} -jar DoctorManagement-0.0.1-SNAPSHOT.jar --spring.profiles.active=${PROFILE}
