@@ -3,12 +3,12 @@ package com.doctorManagement.DoctorManagement.repository;
 import com.doctorManagement.DoctorManagement.domain.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface DoctorRepository extends JpaRepository<Doctor,Integer>{
 
 
-    Optional<Doctor> findByNameIgnoreCase(String name);
+    List<Doctor> findByNameIgnoreCase(String name);
 
     Doctor findByCrm(Integer crm);
 
@@ -16,14 +16,14 @@ public interface DoctorRepository extends JpaRepository<Doctor,Integer>{
 
     Doctor findByLandline(Long landline);
 
-    Optional<Doctor> findByLogradouroIgnoreCase(String logradouro);
+    List<Doctor> findByLogradouroIgnoreCase(String logradouro);
 
-    Optional<Doctor>  findByCep(Integer cep);
+    List<Doctor>  findByCep(Integer cep);
 
-    Optional<Doctor> findByUfIgnoreCase(String uf);
+    List<Doctor> findByUfIgnoreCase(String uf);
 
-    Optional<Doctor>  findByLocalidadeIgnoreCase(String localidade);
+    List<Doctor>  findByLocalidadeIgnoreCase(String localidade);
 
-    Optional<Doctor>  findByBairroIgnoreCase(String bairro);
+    List<Doctor>  findByBairroIgnoreCase(String bairro);
 
 }

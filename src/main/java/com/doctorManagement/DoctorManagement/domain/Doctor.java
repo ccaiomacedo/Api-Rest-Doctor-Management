@@ -20,10 +20,13 @@ public class Doctor implements Serializable {
 
     private String name;
 
+    @Column(unique = true)
     private Integer crm;
 
+    @Column(unique = true)
     private long landline;
 
+    @Column(unique = true)
     private long cellPhone;
 
     private Integer cep;

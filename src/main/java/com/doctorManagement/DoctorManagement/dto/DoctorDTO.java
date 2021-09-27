@@ -3,6 +3,7 @@ package com.doctorManagement.DoctorManagement.dto;
 import com.doctorManagement.DoctorManagement.domain.Doctor;
 import com.doctorManagement.DoctorManagement.domain.MedicalSpecialty;
 import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
